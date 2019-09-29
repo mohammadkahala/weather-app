@@ -1,0 +1,29 @@
+.ThreeDaysWeather{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 90px;
+}
+
+.ThreeDaysWeather__section{
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ThreeDaysWeather__img{
+    height: 55%;
+    align-self: center
+}
+
+.ThreeDaysWeather__date, .ThreeDaysWeather__temp{
+    font-size: 2rem;
+}
+
+.ThreeDaysWeather__temp{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
