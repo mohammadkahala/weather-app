@@ -30,6 +30,7 @@ class App extends React.Component{
                             <div className='error-message'>
                                 <h2>404 Not Found</h2>
                                 <p>this page is under development</p>
+                                <p>Open Home Page</p>
                             </div>
                         }/>
                     </Switch>
