@@ -1,0 +1,21 @@
+.suggestion-list {
+    display: block;
+    margin: 0 auto;
+    width: 40%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 94px;
+}
+
+.suggestion-list__item{
+    width: 100%;
+    color: black;
+    background: rgba(255, 255, 255, 0.4);
+    padding: 3px 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.focused-item{
+    background: rgba(255, 255, 255, 0.6);
+}

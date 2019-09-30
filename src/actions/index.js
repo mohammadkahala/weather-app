@@ -55,33 +55,6 @@ export const getCurrentLocation = () => dispatch => {
     })
 };
 
-export const getCurrentDayWeather = () => (dispatch, getState) => {
-    const state = getState();
-    getCurrentWeather(
-        `${state.currentLocationCoords.latitude},${state.currentLocationCoords.longitude}`,
-        'location')
-    .then((response) => {
-        dispatch({
-            type: "CURRENT_WEATHER",
-            payload: response
-        })
-    });
-};
-
-export const getThreeDayWeather = () => (dispatch, getState) => {
-    const state = getState();
-    getThreeDaysWeather(
-        `${state.currentLocationCoords.latitude},${state.currentLocationCoords.longitude}`,
-        'location')
-    .then((response) => {
-        dispatch({
-            type: "THREE_DAYS_WEATHER",
-            payload: response
-        })
-    });
-};
-
-
 export const getCityWeather = () => (dispatch, getState) => {
     const state = getState();
     const cityName = state.citiesList[state.focusedSuggestionListItem];
@@ -106,7 +79,7 @@ export const getCityWeather = () => (dispatch, getState) => {
 
     getWeatherData(
         dispatch,
-        cityName.replace(' ', ''),
+        cityName.replace(', ', ','),
         'city'
     );
 };

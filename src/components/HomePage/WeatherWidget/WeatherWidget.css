@@ -1,0 +1,14 @@
+.WeatherWidget, .loading{
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    width: 310px;
+}
+
+/*.loading{*/
+/*    left:;*/
+/*}*/
+
+.loading p{
+    font-size: 7rem;
+}
