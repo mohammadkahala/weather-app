@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/ThreeDaysWeather.css';
+import {connect} from 'react-redux';
 
 function SingleDayWeather(props) {
     return (
@@ -12,15 +13,31 @@ function SingleDayWeather(props) {
 }
 
 class ThreeDaysWeather extends React.Component{
+    renderList = () => {
+        return this.props.threeDaysWeather.map( ({date, main, weatherState}) => {
+            return <SingleDayWeather
+                date={date}
+                maxTemp={main.tempMax}
+                minTemp={main.tempMin}
+            />
+        })
+    };
+
     render() {
-        return (
-            <div className='ThreeDaysWeather'>
-                <SingleDayWeather date='Sat 4/10' maxTemp='10' minTemp='5'/>
-                <SingleDayWeather date='Sat 4/10' maxTemp='10' minTemp='5'/>
-                <SingleDayWeather date='Sat 4/10' maxTemp='10' minTemp='5'/>
-            </div>
-        )
+        if (this.props.threeDaysWeather){
+            return (
+                <div className='ThreeDaysWeather'>
+                    {this.renderList()}
+                </div>
+            )
+        }else {
+            return <div>Loading</div>;
+        }
     }
 }
 
-export default ThreeDaysWeather;
+const mapStateToProps = (state) => {
+    return {currentLocationCoords: state.currentLocationCoords, threeDaysWeather: state.threeDaysWeather};
+};
+
+export default connect(mapStateToProps)(ThreeDaysWeather);

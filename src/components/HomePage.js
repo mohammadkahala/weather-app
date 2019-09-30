@@ -2,6 +2,7 @@ import React from 'react';
 import '../css/HomePage.css';
 import Search from "./Search";
 import WeatherWidget from "./WeatherWidget";
+import SocialMediaList from "./SocialMediaList/SocialMediaList";
 
 class HomePage extends React.Component{
     render() {
@@ -12,6 +13,7 @@ class HomePage extends React.Component{
                 </div>
                 <Search/>
                 <WeatherWidget/>
+                <SocialMediaList/>
             </div>
         );
     }

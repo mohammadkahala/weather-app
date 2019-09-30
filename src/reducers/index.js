@@ -1,5 +1,12 @@
 import { combineReducers } from "redux";
-import citiesList from './getCitiesList';
+
+const citiesList = (citiesList = [], action) => {
+    if (action.type === "CITIES_SUGGESTIONS"){
+        return action.payload;
+    }
+
+    return citiesList;
+};
 
 const focusedSuggestionListItem = (itemIndex = 0, action) => {
     let suggestionListLength = action.payload;
@@ -35,9 +42,16 @@ const currentDayWeather = (currentDayWeather = null, action) => {
     return currentDayWeather;
 };
 
+const threeDaysWeather = (threeDaysWeather = null, action) => {
+    if(action.type === "THREE_DAYS_WEATHER")
+        return action.payload.list.slice(0,3);
+    return threeDaysWeather;
+};
+
 export default combineReducers({
     citiesList: citiesList,
     focusedSuggestionListItem: focusedSuggestionListItem,
     currentLocationCoords: geolocation,
-    currentDayWeather: currentDayWeather
+    currentDayWeather: currentDayWeather,
+    threeDaysWeather: threeDaysWeather
 });

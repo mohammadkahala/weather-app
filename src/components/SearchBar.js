@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/SearchBar.css';
 import {connect} from 'react-redux';
-import {getCitiesSuggestions, navigateSuggestionList} from '../actions';
+import {getCitiesSuggestions, navigateSuggestionList, getCityWeather} from '../actions';
 
 class SearchBar extends React.Component{
     state = { value : "" };
@@ -19,9 +19,14 @@ class SearchBar extends React.Component{
         }
     };
 
+    onFormSubmit = (event) => {
+        event.preventDefault();
+        this.props.getCityWeather();
+    };
+
     render() {
         return (
-            <form onSubmit={this.props.onFormSubmit} className='search-bar'>
+            <form onSubmit={this.onFormSubmit} className='search-bar'>
                 <input
                     className='search-bar__input'
                     placeholder='Search City'
@@ -35,4 +40,4 @@ class SearchBar extends React.Component{
     }
 }
 
-export default connect(null, {getCitiesSuggestions, navigateSuggestionList})(SearchBar);
+export default connect(null, {getCitiesSuggestions, navigateSuggestionList, getCityWeather})(SearchBar);

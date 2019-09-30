@@ -32,8 +32,10 @@ function getCurrentLocation() {
 function getCurrentWeather(searchParam, searchMethod) {
     return new Promise(function (resolve, reject) {
         let requestURL;
-        if (searchMethod === "id" || searchMethod === "city")
+        if (searchMethod === "id")
             requestURL = getRequestURL(searchParam);
+        else if(searchMethod === "city")
+            requestURL = `${API_URL}?q=${searchParam.split(',')}&APPID=${API_KEY}`;
         else
             requestURL = getRequestURLWithLocation(searchParam);
 

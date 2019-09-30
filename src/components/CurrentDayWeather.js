@@ -1,14 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import "../css/CurrentDayWeather.css";
-import {getCurrentDayWeather} from '../actions';
 
 class CurrentDayWeather extends React.Component{
-    componentDidUpdate() {
-        //if i have the current location and do not have the current weather then request it
-        if (this.props.currentLocationCoords && this.props.currentDayWeather === null){
-            this.props.getCurrentDayWeather();
-        }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log("update");
     }
 
     render() {
@@ -36,7 +32,7 @@ class CurrentDayWeather extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-    return {currentLocationCoords: state.currentLocationCoords, currentDayWeather: state.currentDayWeather};
+    return {currentDayWeather: state.currentDayWeather};
 };
 
-export default connect(mapStateToProps, {getCurrentDayWeather})(CurrentDayWeather);
+export default connect(mapStateToProps)(CurrentDayWeather);

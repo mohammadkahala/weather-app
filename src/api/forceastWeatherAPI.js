@@ -24,11 +24,13 @@ function getCurrentLocation() {
     return `${weatherState.cityName}, ${weatherState.countryCode}`
 }
 
-function get3DaysWeather(searchParam, searchMethod) {
+function getThreeDaysWeather(searchParam, searchMethod) {
     return new Promise(function (resolve, reject) {
         let requestURL;
-        if (searchMethod === "id" || searchMethod === "city")
+        if (searchMethod === "id")
             requestURL = getRequestURL(searchParam);
+        else if(searchMethod === "city")
+            requestURL = `${API_URL}?q=${searchParam}&APPID=${API_KEY}`;
         else
             requestURL = getRequestURLWithLocation(searchParam);
 
@@ -185,4 +187,4 @@ function kelvinToCelsius(temp) {
 
 // get3DaysWeather("282239");
 
-export {get3DaysWeather, getLastUpdatedTime, TIME_TO_UPDATE};
+export {getThreeDaysWeather, getLastUpdatedTime, TIME_TO_UPDATE};
